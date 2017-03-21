@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Hello World</title>
+    <meta charset="utf-8">
+</head>
+
+<body>
+    <div id="app"></div>
+    <!-- The core React library -->
+    <script src="https://fb.me/react-15.0.2.js"></script>
+    <!-- The ReactDOM Library -->
+    <script src="https://fb.me/react-dom-15.0.2.js"></script>
+    <script type="text/javascript">
+    var component = React.createClass({
+        propTypes: {
+            text: React.PropTypes.string
+        },
+
+        // set 
+        getInitialState: function() {
+            return {
+                text: this.props.text
+            };
+        },
+
+        // event handler 
+        _textChange: function(ev) {
+            this.setState({
+                text: ev.target.value
+            });
+        },
+
+        render: function() {
+            return React.DOM.div(null, React.DOM.textarea({
+                value: this.state.text,
+                onChange: this._textChange
+            }), React.DOM.h3(null, this.state.text.length));
+        }
+    });
+
+    ReactDOM.render(
+        React.createElement(component, {
+            text: 'Jacs'
+        }),
+        document.getElementById('app')
+    );
+    </script>
+</body>
+
+</html>
