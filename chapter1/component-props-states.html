@@ -13,15 +13,15 @@
     <!-- The ReactDOM Library -->
     <script src="https://fb.me/react-dom-15.0.2.js"></script>
     <script type="text/javascript">
-    var component = React.createClass({
+    var TextareaCounter = React.createClass({
         propTypes: {
-            text: React.PropTypes.string
+            defualtText: React.PropTypes.string
         },
 
         // set 
         getInitialState: function() {
             return {
-                text: this.props.text
+                text: this.props.defualtText
             };
         },
 
@@ -35,14 +35,14 @@
         render: function() {
             return React.DOM.div(null, React.DOM.textarea({
                 value: this.state.text,
-                onChange: this._textChange
+                onChange: this._textChange // event handler register
             }), React.DOM.h3(null, this.state.text.length));
         }
     });
 
     ReactDOM.render(
-        React.createElement(component, {
-            text: 'Jacs'
+        React.createElement(TextareaCounter, {
+            defualtText: 'Jacs'
         }),
         document.getElementById('app')
     );
